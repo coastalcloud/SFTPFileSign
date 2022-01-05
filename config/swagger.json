@@ -1,0 +1,110 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "FileEncryptor"
+    },
+    "paths": {
+        "/file": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success response",
+                        "schema": {
+                            "$ref": "#/definitions/GiveNewSchemaNameHere"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "success"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Failure",
+                        "schema": {
+                            "$ref": "#/definitions/GiveNewSchemaNameHere"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "message": "fail",
+                                "reason": "Upload failed"
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "directory",
+                        "in": "query",
+                        "description": "Directory to store file",
+                        "required": true,
+                        "type": "string",
+                        "format": ""
+                    },
+                    {
+                        "name": "host",
+                        "in": "query",
+                        "description": "host",
+                        "required": true,
+                        "type": "string",
+                        "format": ""
+                    },                                
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "description": "username",
+                        "required": true,
+                        "type": "string",
+                        "format": ""
+                    },
+                    {
+                        "name": "port",
+                        "in": "query",
+                        "description": "required port",
+                        "required": true,
+                        "type": "string",
+                        "format": ""
+                    },
+                    {
+                        "name": "fileName",
+                        "in": "query",
+                        "description": "name for the file",
+                        "required": true,
+                        "type": "string",
+                        "format": ""
+                    },
+                    {
+                        "name": "file",
+                        "in": "formData",
+                        "description": "main file to encrypt",
+                        "required": true,
+                        "type": "string",
+                        "format": ""
+                    }
+                ],
+                "operationId": "postFile",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ]
+            }
+        }
+    },
+    "definitions": {
+        "GiveNewSchemaNameHere": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string",
+                    "default": "fail"
+                },
+                "reason": {
+                    "type": "string",
+                    "default": "Upload failed"
+                }
+            }
+        }
+    }
+}

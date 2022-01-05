@@ -1,0 +1,47 @@
+{
+    "name": "file-encryptor-nodejs-app-1639548237785",
+    "description": "",
+    "version": "1.0.0",
+    "author": "creatorName <a@b.com>",
+    "contributors": [],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/githubUser/file-encryptor-nodejs-app-1639548237785.git"
+    },
+    "bugs": "http://github.com/githubUser/file-encryptor-nodejs-app-1639548237785/issues",
+    "publishConfig": {
+        "registry": "https://registry.npmjs.org"
+    },
+    "dependencies": {
+        "axios": "^0.24.0",
+        "body-parser": "^1.19.1",
+        "cors": "^2.8.5",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "openpgp": "^5.0.1",
+        "sftp-upload": "^1.0.3",
+        "ssh2": "^1.5.0",
+        "ssh2-sftp-client": "^7.2.0",
+        "swaggerize-express": "^4.0.5",
+        "swagmock": "~1.0.0"
+    },
+    "devDependencies": {
+        "eslint": "^8",
+        "is-my-json-valid": "^2.20.6",
+        "istanbul": "~0.4.3",
+        "js-yaml": "^4.1.0",
+        "supertest": "^6.1.6",
+        "swagger-parser": "^10.0.3",
+        "tape": "^5"
+    },
+    "scripts": {
+        "test": "tape 'tests/**/*.js'",
+        "cover": "istanbul cover tape -- 'tests/**/*.js'",
+        "lint": "eslint .",
+        "regenerate": "yo swaggerize:test --framework express --apiPath './config/swagger.json'"
+    },
+    "generator-swaggerize": {
+        "version": "3.1.0"
+    },
+    "main": "./server"
+}
