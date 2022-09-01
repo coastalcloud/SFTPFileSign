@@ -96,21 +96,21 @@ module.exports = {
             */
             // ------------------------- ENCRYPTION/DECRYPTION ENDS -----------------------
 
-            const authorizedResult = await sftp.connect({
-                host: `${req.query.host}`,
-                port: `${req.query.port}`,
-                username: `${req.query.username}`,
-                privateKey: sshPrivateKey
-            }).then(() => {
-                return sftp.put(signatureArmored, `/${req.query.directory}/${req.query.fileName}`);
-            }).then(data => {
-                console.log(data, 'the data info');
-                sftp.end();
-                res.status(200).send('success');
-            }).catch(err => {
-                console.log(err, 'catch error');
-                callback(err);
-            });
+            try {
+                const authorizedResult = await sftp.connect({
+                    host: `${req.query.host}`,
+                    port: `${req.query.port}`,
+                    username: `${req.query.username}`,
+                    privateKey: sshPrivateKey
+                });
+    
+                await sftp.put(signatureArmored, `/${req.query.directory}/${req.query.fileName}`);
+                await sftp.end();
+    
+                return res.status(200).send('success');
+            } catch(err){
+                return res.status(500).send(err.message);            
+            }
           
             
         },
